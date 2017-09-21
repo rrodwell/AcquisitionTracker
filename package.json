@@ -1,14 +1,22 @@
 {
-  "name": "insitenchallenge",
+  "name": "acquisitiontracker",
   "version": "1.0.0",
-  "description": "Coding Challenge for Insiten",
+  "description": "Online tool to help companies track and analyze potential acquisition targets",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrodwell/AcquisitionTracker.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrodwell/AcquisitionTracker/issues"
+  },
+  "homepage": "https://github.com/rrodwell/AcquisitionTracker#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
