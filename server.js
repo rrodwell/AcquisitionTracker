@@ -1,11 +1,12 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-// env = require('dotenv').load(),
-var path = require("path");
-var webpack = require("webpack");
-var logger = require("morgan");
+//Require Dependencies
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require("path");
+const webpack = require("webpack");
+const logger = require("morgan");
 
-var config = require("./webpack.config");
+// Require webpack.config
+const config = require("./webpack.config");
 
 // Create Instance of Express
 let app = express();
