@@ -1,7 +1,14 @@
 import React from 'react';
+import { Route } from "react-router-dom";
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
-import Company from '../../models/Company';
+// import Company from '../../models/Company';
+
+import Companies from './pages/Companies';
+import AddCompany from './pages/AddCompany';
+import UpdateCompany from './pages/UpdateCompany';
+import AddContact from './pages/AddContact';
+
 
 class Main extends React.Component {
 
@@ -50,7 +57,12 @@ class Main extends React.Component {
                             </button>
                         </form>
                     </div>
+                    <Route path='/companies' component={Companies} />
+                    <Route path='/updatecompany' component={UpdateCompany} />
+                    <Route path='/addcompany' component={AddCompany} />
+                    <Route path='/addcontact' component={AddContact} />
                 </div>
+
                 <Footer/>
             </div>
         )
