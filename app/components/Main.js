@@ -7,11 +7,11 @@ class Main extends React.Component {
 
     addCompany() {
 
-        var companyName = $('#company-name').val();
-        var companyStatus = $('#company-status').val();
-        var companyContacts = $('#company-contacts').val();
+        var companyName = $('#company-name').val().trim();
+        var companyStatus = $('#company-status').val().trim();
+        var companyContacts = $('#company-contacts').val().trim();
         console.log(typeof(companyContacts));
-        var companyPerformance = $('#company-performance').val();
+        var companyPerformance = $('#company-performance').val().trim();
 
         var companyA = new Company(companyName,companyStatus,companyContacts,companyPerformance);
         console.log(companyA);
@@ -22,7 +22,7 @@ class Main extends React.Component {
             <div>
                 <Navbar />
                 <h2>Hello World!</h2>
-                <div className="contaienr">
+                <div className="container">
                     <div className="row">
                         <form className="col s12">
                             <div className="row">
