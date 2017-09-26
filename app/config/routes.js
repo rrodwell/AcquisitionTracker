@@ -1,6 +1,6 @@
 //React Dependencies
 import React from 'react';
-import { HashRouter as Router, Route, } from 'react-router-dom';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
 
 //Main Component
 import Main from '../components/Main';
@@ -17,8 +17,8 @@ module.exports = (
     <Router>
         <Main component={Main}>
             <Route exact path='/' component={UserLogin}/>
-            <Route exact path='/register' component={RegisterUser} />
-            <Route exact path='/companies' component={Companies} />
+            <Route  path='/register' component={RegisterUser} />
+            <Route  path='/companies' component={Companies} />
         </Main>
     </Router>
 );
