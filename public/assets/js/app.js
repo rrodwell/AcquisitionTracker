@@ -3,9 +3,9 @@ $(document).ready(function(){
 
     $('.modal').modal();
 
-    // $('.addCompany').on("click",function(){
-    //     $('#addCompanyModal').modal('open');
-    // });
+    $('.addCompany').on("click",function(){
+        $('#addCompanyModal').modal('open');
+    });
 
     $('.close-modal').on("click",function(){
         $('.modal').modal('close');

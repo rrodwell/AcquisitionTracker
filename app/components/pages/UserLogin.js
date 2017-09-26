@@ -25,9 +25,8 @@ class UserLogin extends React.Component {
                                 </div>
                                 <a>Forgot Password?</a>
                             </div>
-                            <button className="btn waves-effect waves-light submitBtn" type="submit">
-                                <Link to="/companies">Sign In</Link>
-                            </button>
+                            <Link to="/companies" className="btn waves-effect waves-light submitBtn" type="submit">Sign In
+                            </Link>
                         </form>
                     </div>
                     <div>

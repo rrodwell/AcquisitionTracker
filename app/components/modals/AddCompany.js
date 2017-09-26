@@ -16,7 +16,7 @@ class AddCompany extends React.Component {
         let companyPerformance = $('#company-performance').val().trim();
         let newID = this.props.data.length + 1;
 
-        let companyA = {
+        let newCompany = {
             id: newID,
             name: companyName,
             status: companyStatus,
@@ -24,7 +24,7 @@ class AddCompany extends React.Component {
             performance:companyPerformance
         };
 
-        this.props.data.push(companyA);
+        this.props.data.push(newCompany);
         this.props.handleSubmit(this.props.data);
 
         console.log(this.props.data);
@@ -50,7 +50,7 @@ class AddCompany extends React.Component {
                                 </div>
                                 <div className="input-field col s12 ">
                                     <select id="company-status">
-                                        <option value="" disabled selected>Choose the status</option>
+                                        <option value="" disabled defaultValue>Choose the status</option>
                                         <option value="Approved">Approved</option>
                                         <option value="Pending Approved">Pending Approved</option>
                                         <option value="Researching">Researching</option>

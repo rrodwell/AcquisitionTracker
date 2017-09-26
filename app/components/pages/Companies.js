@@ -1,4 +1,7 @@
+// React Dependencies
 import React from "react";
+import axios from "axios";
+
 import AddCompany from "../modals/AddCompany";
 import UpdateCompany from "../modals/UpdateCompany";
 // import css from "../../public/css/footer.css";
@@ -11,70 +14,76 @@ class Companies extends React.Component {
         this.state = {
             // State needed
             companies: [],
-            key: 0
+            companyOBJ: {}
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.getCompanies = this.getCompanies.bind(this);
     }
 
+
+    getCompanies() {
+        fetch('/companydata')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({companies: responseJson});
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+
+    componentDidUpdate(){
+        console.log("stateKey: "+ this.state.key);
+    }
 
     componentDidMount(){
-        // Static data
-        const data = [
-            {
-                id: 1,
-                name: 'Honda',
-                status: 'Pending Approval',
-                contact: 'Accord Crosstour',
-                performance: '$16,811'
+        this.getCompanies();
+        console.log("MongoDB: " + this.state.companies);
+        console.log("fuck");
+    }
 
-            },
-            {
-                id: 2,
-                name: 'Mercedes-Benz',
-                status: 'Declined',
-                contact: 'AMG',
-                performance: '$138,157'
+    handleSubmit(companyArr) {
+        // console.log(JSON.stringify(companyArr));
+        // if(companyArr.id > this.state.companies.length){
+        //     this.setState({companies: this.state.companies.concat([companyArr])});
+        //
+        // } else {
+        //     for(var i = 0; i < this.state.companies.length; i++){
+        //         if(this.state.companies[i].id == this.state.companyOBJ.id){
+        //
+        //             companyArr.id = this.state.companyOBJ.id
+        //             this.state.companies[i] = companyArr;
+        //             this.setState({companies: this.state.companies});
+        //         }
+        //     }
+        // }
+        this.setState(companyArr);
+    }
 
-            },
-            {
-                id: 3,
-                name: 'BMW',
-                status: 'Pending Approval',
-                contact: 'X6',
-                performance: '$68,999'
-            },
-            {
-                id: 4,
-                name: 'Ford',
-                status: 'Researching',
-                contact: 'Edge',
-                performance: '$36,275'
-            },
-            {
-                id: 5,
-                name: 'Dodge',
-                status: 'Approved',
-                contact: 'Viper',
-                performance: '$123,890'
+    handleEdit(e) {
+        var dataKey = e.target.id;
+        console.log("this ran: "+ dataKey);
+        var companiesData = this.state.companies;
+        for(var i = 0; i < companiesData.length; i++){
+            if(companiesData[i]._id == dataKey) {
+                var obj = companiesData[i];
+                this.setState({companyOBJ:obj});
             }
-        ];
-        // Update state
-        this.setState({companies: data});
+        }
     }
 
+    deleteCompany(company) {
+        var index;
+        var companyList = this.state.companies;
+        for(var i = 0; i < companyList.length; i++){
+            if(companyList[i].id === this.state.companyOBJ.id){
+                index = companyList.indexOf(companyObj);
+            }
+        }
 
-    handleSubmit(companyObj) {
-
-        this.setState({companies: companyObj});
-
-    }
-
-    handleEdit(i, event) {
-        console.log(i);
-        return i;
-        // this.setState({key: i});
-        // console.log(this.state.key);
     }
 
     render() {
@@ -82,12 +91,12 @@ class Companies extends React.Component {
         const companiesTable = this.state.companies.map((companies) => {
             return (
 
-                <tr key={companies.id} >
+                <tr key={companies._id}>
                     <td>{companies.name}</td>
                     <td>{companies.status}</td>
                     <td>{companies.contact}</td>
                     <td>{companies.performance}</td>
-                    <td><a className="updateCompany" data-target="updateCompanyModal" data-key={companies.id}><i className="material-icons">edit</i></a></td>
+                    <td><a className="updateCompany" data-target="updateCompanyModal" onClick={this.handleEdit}><i className="material-icons" id={companies._id}>edit</i></a></td>
                 </tr>
             )
         });
@@ -117,7 +126,8 @@ class Companies extends React.Component {
 
 
                 <AddCompany handleSubmit={this.handleSubmit} data={this.state.companies}/>
-                <UpdateCompany handleSubmit={this.handleSubmit} data={this.state.companies} handleEdit = {this.handleEdit}/>
+
+                <UpdateCompany handleSubmit={this.handleSubmit} data={this.state.companies} handleEdit = {this.handleEdit} companyOBJ={this.state.companyOBJ}/>
 
             </div>
         )

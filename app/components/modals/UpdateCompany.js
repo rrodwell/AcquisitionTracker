@@ -6,31 +6,65 @@ class UpdateCompany extends React.Component {
         // Pass props to the parent component
         super(props);
 
-        // this.submit = this.submit.bind(this);
+        this.updateCompany = this.updateCompany.bind(this);
+        this.changeName = this.changeName.bind(this);
+        this.changeStatus = this.changeStatus.bind(this);
+        this.changeContact = this.changeContact.bind(this);
+        this.changePerformance = this.changePerformance.bind(this);
 
+    }
+
+    componentDidMount(){
+
+    }
+    changeName(e) {
+        this.props.companyOBJ.name = e.target.value;
+    }
+
+    changeStatus(e) {
+        this.props.companyOBJ.status = e.target.value;
+    }
+
+    changePerformance(e) {
+        this.props.companyOBJ.performance = e.target.value;
+    }
+
+    changeContact(e) {
+        this.props.companyOBJ.contact = e.target.value;
     }
 
     updateCompany() {
+        let companyName = $('#company-name').val().trim();
+        let companyStatus = $('#company-status').val().trim();
+        let companyContacts = $('#company-contacts').val().trim();
+        let companyPerformance = $('#company-performance').val().trim();
 
-        // let companyName = $('#company-name').val().trim();
-        // let companyStatus = $('#company-status').val().trim();
-        // let companyContacts = $('#company-contacts').val().trim();
-        // let companyPerformance = $('#company-performance').val().trim();
-        // let newID = this.props.data.length + 1;
-        //
-        // let companyA = {
-        //     id: newID,
-        //     name: companyName,
-        //     status: companyStatus,
-        //     contact: companyContacts,
-        //     performance:companyPerformance
-        // };
-        //
+        console.log(companyName);
+        console.log(companyStatus);
+        console.log(companyContacts);
+        console.log(companyPerformance);
+        let updatedCompanyOBJ = this.props.companyOBJ;
+        // console.log(JSON.stringify(updatedCompanyOBJ));
+        // updatedCompanyOBJ.name = companyName;
+        // updatedCompanyOBJ.status = companyStatus;
+        // updatedCompanyOBJ.contact = companyContacts;
+        // updatedCompanyOBJ.performance = companyPerformance;
+        // console.log(JSON.stringify(updatedCompanyOBJ));
+
+
         // this.props.data.push(companyA);
-        // this.props.handleSubmit(this.props.data);
-        console.log(this.props.handleEdit);
+        // this.props.handleSubmit(updatedCompanyOBJ);
+        // console.log(this.props.handleEdit);
+
+        // this.props.handleSubmit(this.state.company);
+
         // this.clearForm();
     }
+
+    clearForm() {
+        document.getElementById("company-form").reset();
+    }
+
 
     render() {
         return (
@@ -42,12 +76,12 @@ class UpdateCompany extends React.Component {
                         <form className="col s12" id="company-form">
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="company-name" type="text" className="validate" placeholder={this.props.data.name}/>
+                                    <input id="company-name" type="text" className="validate" value={this.props.companyOBJ.name} onChange={this.changeName}/>
                                     <label htmlFor="company-name">Company Name</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <select id="company-status" placeholder={this.props.data.status}>
-                                        <option value="" disabled selected>Choose the status</option>
+                                    <select id="company-status" value={this.props.companyOBJ.status} onChange={this.changeStatus}>
+                                        <option value="" disabled>Choose the status</option>
                                         <option value="Approved">Approved</option>
                                         <option value="Pending Approved">Pending Approved</option>
                                         <option value="Researching">Researching</option>
@@ -56,11 +90,11 @@ class UpdateCompany extends React.Component {
                                     <label htmlFor="company-status">Company Status</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <input id="company-contacts" type="text" className="validate" placeholder={this.props.data.contact}/>
+                                    <input id="company-contacts" type="text" className="validate" value={this.props.companyOBJ.contact}  onChange={this.changeContact}/>
                                     <label htmlFor="company-contacts">Company Contacts</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <input id="company-performance" type="text" className="validate" placeholder={this.props.data.performance}/>
+                                    <input id="company-performance" type="text" className="validate" value={this.props.companyOBJ.performance} onChange={this.changePerformance}/>
                                     <label htmlFor="company-performance">Company Performance</label>
                                 </div>
                             </div>

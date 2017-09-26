@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 
 class RegisterUser extends React.Component {
 
-    createAccount() {
-        window.location.assign("/companies");
-    }
-
     render() {
         return (
             <div className="registerForm center-align">
@@ -38,13 +34,14 @@ class RegisterUser extends React.Component {
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                             </div>
                         </div>
-                        <button className="btn waves-effect waves-light submitBtn" type="submit">
-                            <Link to="/companies">Create Account</Link>
-                        </button>
+                        <Link to="/companies" className="btn waves-effect waves-light submitBtn" type="submit">Create Account
+                        </Link>
                     </form>
                 </div>
                 <div>
-                    <p>Already have an account?  <Link to="/">Log In</Link></p>
+                    <p>Already have an account?
+                        <Link to="/">Log In</Link>
+                    </p>
                 </div>
             </div>
         )
