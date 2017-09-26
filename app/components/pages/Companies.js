@@ -105,7 +105,7 @@ class Companies extends React.Component {
         return (
             <div className="companies center">
                 <div className= "table-container">
-                    <h3>Target Comapnies</h3>
+                    <h3>Target Companies</h3>
                     <table className="bordered highlight centered">
                         <thead>
                             <tr>
