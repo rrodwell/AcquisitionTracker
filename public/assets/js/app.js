@@ -3,15 +3,16 @@ $(document).ready(function(){
 
     $('.modal').modal();
 
-    $('.addCompany').on("click",function(){
-        $('#addCompanyModal').modal('open');
-    });
+    // $('.addCompany').on("click",function(){
+    //     $('#addCompanyModal').modal('open');
+    // });
 
-    $('.modal-close').on("click",function(){
-        $('#modal1').modal('close');
+    $('.close-modal').on("click",function(){
+        $('.modal').modal('close');
     });
 
     $('.updateCompany').on("click",function(){
         $('#updateCompanyModal').modal('open');
     });
+
 });

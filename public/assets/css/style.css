@@ -1,7 +1,173 @@
-.modal-content {
-    width: auto;
+html {
+    background: url(../images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.form.row {
+/*Nav*/
+nav {
+    margin-bottom: 20px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/*Login*/
+.loginForm {
+    margin: -250px 0 0 -250px;
+}
+
+.loginForm span i, .registerForm span i{
+    margin-top: 20px;
+    font-size: 7rem;
+    color: #4b4b4b;
+}
+
+.submitBtn {
+    background-color: #008000;
+    width: 95%;
+}
+
+.btn:hover, .btn-large:hover, .btn:after, .btn:before{
+    background-color: #009e00;
+}
+
+.loginPassword a {
+    float: left;
+    margin-left: 10px;
+    font-size: 9pt;
+}
+
+/*Register*/
+.registerForm{
+    position: absolute;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    margin: -300px 0 0 -250px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+}
+
+/*Form titles*/
+input:not([type]):focus:not([readonly]) + label, input[type=text]:not(.browser-default):focus:not([readonly]) + label, input[type=password]:not(.browser-default):focus:not([readonly]) + label, input[type=email]:not(.browser-default):focus:not([readonly]) + label, input[type=url]:not(.browser-default):focus:not([readonly]) + label, input[type=time]:not(.browser-default):focus:not([readonly]) + label, input[type=date]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime]:not(.browser-default):focus:not([readonly]) + label, input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, input[type=tel]:not(.browser-default):focus:not([readonly]) + label, input[type=number]:not(.browser-default):focus:not([readonly]) + label, input[type=search]:not(.browser-default):focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: darkgrey;
+}
+
+/*Form underline*/
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #4b4b4b;
+    box-shadow: 0 1px 0 0 #4b4b4b;
+}
+
+ul.dropdown-content li span {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: black;
+}
+
+.logo {
+    margin-top: 30px;
+    width: 200px;
+    height: 150px;
+}
+
+
+
+/*Companies*/
+.companies{
+    width: 90%;
+    margin: 5% auto;
+    padding: 15px;
+    /*background-color: rgba(255, 255, 255, 0.75);*/
+}
+
+.companies h3{
+    font-weight: 600;
+}
+
+.table-container {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    color: blacK;
+    background-color: rgba(255,255,255, 0.9);
+    border: 1px solid black;
+}
+
+.companies a.addCompany  {
+    margin: 10px;
+    right: 3%;
+    font-size: x-large;
+}
+
+.table-container table {
+    width: 90%;
+    min-height: 100% !important;
     margin: auto;
 }
+
+.table-container th {
+    font-size: large;
+}
+
+a {
+    color: #858585 !important;
+}
+
+
+/*Modals*/
+.modal{
+    max-height: 100% !important;
+    width: 50% !important;
+    background-color: rgba(29, 29, 29, 0.99);
+    color: white;
+}
+
+.modal-footer {
+    background-color: rgba(29, 29, 29, 0.99) !important;
+}
+
+.modal-footer a {
+    color: white;
+}
+
+.modal-content {
+    width: auto;
+    padding: 10px !important;
+}
+
+.modal-content h4 {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.modal-content form {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+form.row {
+    margin: auto;
+}
+
+form input {
+    font-size: 13pt !important;
+}
+
+.select-wrapper span.caret{
+    color: white !important;
+}
+.close {
+    position: absolute;
+    top:5px;
+    right: 12px;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.delete {
+    float: left;
+}
+

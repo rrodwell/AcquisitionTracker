@@ -38,16 +38,17 @@ class AddCompany extends React.Component {
     render() {
         return (
             <div id="addCompanyModal" className="modal">
+                <span className="close cursor close-modal"><i className="material-icons">close</i></span>
                 <div className="modal-content">
                     <h4>Add Company</h4>
                     <div className="row">
                         <form className="col s12" id="company-form">
                             <div className="row">
-                                <div className="input-field col s8 offset-s2">
+                                <div className="input-field col s12 ">
                                     <input id="company-name" type="text" className="validate" placeholder='Company ABC'/>
                                     <label htmlFor="company-name">Company Name</label>
                                 </div>
-                                <div className="input-field col s8 offset-s2">
+                                <div className="input-field col s12 ">
                                     <select id="company-status">
                                         <option value="" disabled selected>Choose the status</option>
                                         <option value="Approved">Approved</option>
@@ -57,11 +58,11 @@ class AddCompany extends React.Component {
                                     </select>
                                     <label htmlFor="company-status">Company Status</label>
                                 </div>
-                                <div className="input-field col s8 offset-s2">
+                                <div className="input-field col s12 ">
                                     <input id="company-contacts" type="text" className="validate" placeholder='John Smith'/>
                                     <label htmlFor="company-contacts">Company Contacts</label>
                                 </div>
-                                <div className="input-field col s8 offset-s2">
+                                <div className="input-field col s12 ">
                                     <input id="company-performance" type="text" className="validate" placeholder='Excellent'/>
                                     <label htmlFor="company-performance">Company Performance</label>
                                 </div>
@@ -70,7 +71,7 @@ class AddCompany extends React.Component {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <a className="modal-close waves-effect waves-green btn-flat" onClick={this.addCompany}>Add</a>
+                    <a className="waves-effect waves-green btn-flat close-modal" onClick={this.addCompany}>Add</a>
                 </div>
             </div>
         )

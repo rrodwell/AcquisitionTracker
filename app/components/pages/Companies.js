@@ -10,7 +10,8 @@ class Companies extends React.Component {
         // Set initial state
         this.state = {
             // State needed
-            companies: []
+            companies: [],
+            key: 0
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -69,26 +70,33 @@ class Companies extends React.Component {
 
     }
 
+    handleEdit(i, event) {
+        console.log(i);
+        return i;
+        // this.setState({key: i});
+        // console.log(this.state.key);
+    }
+
     render() {
 
         const companiesTable = this.state.companies.map((companies) => {
             return (
 
-                <tr key={companies.id}>
+                <tr key={companies.id} >
                     <td>{companies.name}</td>
                     <td>{companies.status}</td>
                     <td>{companies.contact}</td>
                     <td>{companies.performance}</td>
-                    <td><a className="updateCompany"><i className="material-icons">edit</i></a></td>
+                    <td><a className="updateCompany" data-target="updateCompanyModal" data-key={companies.id}><i className="material-icons">edit</i></a></td>
                 </tr>
             )
         });
 
         return (
             <div className="companies center">
-                <h2>Company list</h2>
-                <div className= "container">
-                    <table className="highlight centered responsive-table">
+                <div className= "table-container">
+                    <h3>Target Comapnies</h3>
+                    <table className="bordered highlight centered">
                         <thead>
                             <tr>
                                 <th>Company Name</th>
@@ -97,17 +105,19 @@ class Companies extends React.Component {
                                 <th>Performance</th>
                                 <th>Update/Edit</th>
                             </tr>
-                        </thead>
+                             </thead>
 
                         <tbody>
                             {companiesTable}
                         </tbody>
                     </table>
-                    <a data-target="modal1" className="btn-floating btn-large waves-effect waves-light red right modal-trigger addCompany"><i className="material-icons">add</i></a>
                 </div>
 
+                <a data-target="addCompanyModal" className="btn-floating btn-large waves-effect waves-light red right modal-trigger addCompany" ><i className="material-icons">add</i></a>
+
+
                 <AddCompany handleSubmit={this.handleSubmit} data={this.state.companies}/>
-                <UpdateCompany/>
+                <UpdateCompany handleSubmit={this.handleSubmit} data={this.state.companies} handleEdit = {this.handleEdit}/>
 
             </div>
         )
