@@ -59,31 +59,8 @@ class UpdateCompany extends React.Component {
     }
 
     updateCompany() {
-        let companyName = $('#company-name').val().trim();
-        let companyStatus = $('#company-status').val().trim();
-        let companyContacts = $('#company-contacts').val().trim();
-        let companyPerformance = $('#company-performance').val().trim();
 
-        console.log(companyName);
-        console.log(companyStatus);
-        console.log(companyContacts);
-        console.log(companyPerformance);
-        let updatedCompanyOBJ = this.props.companyOBJ;
-        // console.log(JSON.stringify(updatedCompanyOBJ));
-        // updatedCompanyOBJ.name = companyName;
-        // updatedCompanyOBJ.status = companyStatus;
-        // updatedCompanyOBJ.contact = companyContacts;
-        // updatedCompanyOBJ.performance = companyPerformance;
-        // console.log(JSON.stringify(updatedCompanyOBJ));
-
-
-        // this.props.data.push(companyA);
-        // this.props.handleSubmit(updatedCompanyOBJ);
-        // console.log(this.props.handleEdit);
-
-        // this.props.handleSubmit(this.state.company);
-
-        // this.clearForm();
+        this.clearForm();
     }
 
     clearForm() {
@@ -127,7 +104,7 @@ class UpdateCompany extends React.Component {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <Link to="/companies" className="waves-effect waves-red btn-flat close-modal delete" onClick={this.addCompany}>Delete</Link>
+                    <Link to="/companies" className="waves-effect waves-red btn-flat close-modal delete" onClick={this.props.deleteCompany(this.props.companyOBJ._id)}>Delete</Link>
                     <Link to="/companies" className="waves-effect waves-green btn-flat close-modal" onClick={this.updateCompany}>Update</Link>
                 </div>
             </div>

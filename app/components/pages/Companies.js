@@ -22,6 +22,7 @@ class Companies extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.getCompanies = this.getCompanies.bind(this);
+        this.deleteCompany = this.deleteCompany.bind(this);
     }
 
 
@@ -44,7 +45,6 @@ class Companies extends React.Component {
     componentDidMount(){
         this.getCompanies();
         console.log("MongoDB: " + this.state.companies);
-        console.log("fuck");
     }
 
     handleSubmit(companyArr) {
@@ -65,9 +65,7 @@ class Companies extends React.Component {
     }
 
     handleEdit(e) {
-        e.preventDefault();
         var dataKey = e.target.id;
-        console.log("this ran: "+ dataKey);
         var companiesData = this.state.companies;
         for(var i = 0; i < companiesData.length; i++){
             if(companiesData[i]._id == dataKey) {
@@ -77,15 +75,16 @@ class Companies extends React.Component {
         }
     }
 
-    deleteCompany(company) {
-        var index;
-        var companyList = this.state.companies;
-        for(var i = 0; i < companyList.length; i++){
-            if(companyList[i].id === this.state.companyOBJ.id){
-                index = companyList.indexOf(companyObj);
-            }
-        }
-
+    deleteCompany(id) {
+        fetch(`/companydata/${id}?_method=DELETE`, {
+            method: "POST"
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+            })
+            .catch((error) => {
+                console.error(JSON.stringify(error));
+            });
     }
 
     render() {
@@ -129,7 +128,7 @@ class Companies extends React.Component {
 
                 <AddCompany handleSubmit={this.handleSubmit} data={this.state.companies}/>
 
-                <UpdateCompany handleSubmit={this.handleSubmit} data={this.state.companies} handleEdit = {this.handleEdit} companyOBJ={this.state.companyOBJ}/>
+                <UpdateCompany handleSubmit={this.handleSubmit} data={this.state.companies} handleEdit = {this.handleEdit} companyOBJ={this.state.companyOBJ} deleteCompany = {this.deleteCompany}/>
 
             </div>
         )

@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const bluebird = require("bluebird");
+const methodOverride = require("method-override");
 
 // Require webpack.config
 const config = require("./webpack.config");
@@ -23,6 +24,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("./public"));
+
+app.use(methodOverride("_method"));
 
 const db = process.env.MONGODB_URI || 'mongodb://localhost/acquisitiontracker';
 
@@ -57,7 +60,7 @@ app.post("/companydata", function(req,res){
         console.log("hi")
     });
     console.log(req.body);
-    res.redirect("/#/companies");
+    res.redirect("/companies");
 
 });
 
@@ -78,10 +81,11 @@ app.put("/companydata/:id", function(req,res){
 
 app.delete("/companydata/:id", function(req,res){
     Company.remove({ _id: req.params.id }, function (err) {
-        if (err) return handleError(err);
+        if (err)  throw (err);
         // removed!
-        res.send("Company removed!");
+        res.redirect("/companies");
     });
+
 });
 
 app.listen(PORT, function() {
