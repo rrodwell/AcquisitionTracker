@@ -2,11 +2,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import axios from "axios";
 
 import AddCompany from "../modals/AddCompany";
 import UpdateCompany from "../modals/UpdateCompany";
-// import css from "../../public/css/footer.css";
 
 class Companies extends React.Component {
     constructor(props){
@@ -39,7 +37,7 @@ class Companies extends React.Component {
 
 
     componentDidUpdate(){
-        console.log("stateKey: "+ this.state.key);
+
     }
 
     componentDidMount(){
@@ -65,11 +63,12 @@ class Companies extends React.Component {
     }
 
     handleEdit(e) {
-        var dataKey = e.target.id;
-        var companiesData = this.state.companies;
-        for(var i = 0; i < companiesData.length; i++){
+        let dataKey = e.target.id;
+        let companiesData = this.state.companies;
+        console.log(dataKey);
+        for(let i = 0; i < companiesData.length; i++){
             if(companiesData[i]._id == dataKey) {
-                var obj = companiesData[i];
+                let obj = companiesData[i];
                 this.setState({companyOBJ:obj});
             }
         }

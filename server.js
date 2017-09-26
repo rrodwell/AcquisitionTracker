@@ -50,7 +50,7 @@ app.get("/companydata", function(req,res){
 });
 
 app.post("/companydata", function(req,res){
-    var company = new Company(req.body);
+    let company = new Company(req.body);
     company.save(function (err) {
         if (err) throw (err);
         console.log("hi")

@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
+let mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var CompanySchema = new Schema({
+let CompanySchema = new Schema({
 
     name: {
         type: String
@@ -18,6 +18,6 @@ var CompanySchema = new Schema({
     }
 });
 
-var Company = mongoose.model("Company", CompanySchema);
+let Company = mongoose.model("Company", CompanySchema);
 
 module.exports = Company;

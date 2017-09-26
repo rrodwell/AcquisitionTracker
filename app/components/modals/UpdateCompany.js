@@ -1,7 +1,7 @@
+// React Dependencies
 import React from "react";
 import { Link } from 'react-router-dom';
 
-// import css from "../../public/css/footer.css";
 
 class UpdateCompany extends React.Component {
     constructor(props){
@@ -13,9 +13,10 @@ class UpdateCompany extends React.Component {
         this.changeStatus = this.changeStatus.bind(this);
         this.changeContact = this.changeContact.bind(this);
         this.changePerformance = this.changePerformance.bind(this);
+        this.deleteCompanyID = this.deleteCompanyID.bind(this);
 
         this.state = {
-            companyOBJ: props.companyOBJ
+            companyOBJ: this.props.companyOBJ
         }
 
     }
@@ -25,21 +26,21 @@ class UpdateCompany extends React.Component {
         console.log('state: '+ JSON.stringify(this.state));
     }
 
-    componentWillUpdate () {
-        console.log("companyOBJwillup: " +JSON.stringify(this.props.companyOBJ));
-    }
-
-    componentWillReceiveProps() {
-        console.log("companyOBJwillrec: " +JSON.stringify(this.props.companyOBJ));
-    }
-
-    componentDidMount() {
-        console.log("companyOBJdidmount: " +JSON.stringify(this.props.companyOBJ));
-    }
-
-    componentWillMount() {
-        console.log("companyOBJwillmount: " +JSON.stringify(this.props.companyOBJ));
-    }
+    // componentWillUpdate () {
+    //     console.log("companyOBJwillup: " +JSON.stringify(this.props.companyOBJ));
+    // }
+    // //
+    // componentWillReceiveProps() {
+    //     console.log("companyOBJwillrec: " +JSON.stringify(this.props.companyOBJ));
+    // }
+    //
+    // componentDidMount() {
+    //     console.log("companyOBJdidmount: " +JSON.stringify(this.props.companyOBJ));
+    // }
+    //
+    // componentWillMount() {
+    //     console.log("companyOBJwillmount: " +JSON.stringify(this.props.companyOBJ));
+    // }
 
 
     changeName(e) {
@@ -63,6 +64,10 @@ class UpdateCompany extends React.Component {
         this.clearForm();
     }
 
+    deleteCompanyID() {
+        console.log("current state: " + this.state);
+    }
+
     clearForm() {
         document.getElementById("company-form").reset();
     }
@@ -78,8 +83,8 @@ class UpdateCompany extends React.Component {
                         <form className="col s12" id="company-form">
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="company-name" type="text" className="validate" placeholder={this.props.companyOBJ.name} onChange={this.changeName}/>
-                                    <label htmlFor="company-name">Company Name</label>
+                                    <input id="company-name" type="text" className="validate active" placeholder={this.props.companyOBJ.name} onChange={this.changeName}/>
+                                    <label className="active" htmlFor="company-name">Company Name</label>
                                 </div>
                                 <div className="input-field col s12">
                                     <select id="company-status" placeholder={this.props.companyOBJ.status} onChange={this.changeStatus}>
@@ -104,7 +109,7 @@ class UpdateCompany extends React.Component {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <Link to="/companies" className="waves-effect waves-red btn-flat close-modal delete" onClick={this.props.deleteCompany(this.props.companyOBJ._id)}>Delete</Link>
+                    <Link to="/companies" className="waves-effect waves-red btn-flat close-modal delete" onClick={this.deleteCompanyID}>Delete</Link>
                     <Link to="/companies" className="waves-effect waves-green btn-flat close-modal" onClick={this.updateCompany}>Update</Link>
                 </div>
             </div>

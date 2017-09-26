@@ -66,6 +66,19 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     box-shadow: 0 1px 0 0 #4b4b4b;
 }
 
+.input-field label:not(.label-icon){
+     -webkit-transform: none !important;
+    transform: translateY(-14px) scale(0.8) !important;
+    /* -webkit-transform-origin: 0 0; */
+    transform-origin: 0 0 !important;
+}
+
+.select-wrapper+label {
+    position: absolute;
+     top: 0 !important;
+    font-size: .8rem;
+}
+
 ul.dropdown-content li span {
     background-color: rgba(255, 255, 255, 0.85);
     color: black;
