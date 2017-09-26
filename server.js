@@ -7,9 +7,6 @@ const mongoose = require("mongoose");
 const bluebird = require("bluebird");
 const methodOverride = require("method-override");
 
-// Require webpack.config
-const config = require("./webpack.config");
-
 const Company = require("./models/companySchema");
 
 // Create Instance of Express
