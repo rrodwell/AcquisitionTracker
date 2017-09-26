@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 class AddCompany extends React.Component {
     constructor(props){
@@ -14,10 +16,8 @@ class AddCompany extends React.Component {
         let companyStatus = $('#company-status').val().trim();
         let companyContacts = $('#company-contacts').val().trim();
         let companyPerformance = $('#company-performance').val().trim();
-        let newID = this.props.data.length + 1;
 
         let newCompany = {
-            id: newID,
             name: companyName,
             status: companyStatus,
             contact: companyContacts,
@@ -25,7 +25,7 @@ class AddCompany extends React.Component {
         };
 
         this.props.data.push(newCompany);
-        this.props.handleSubmit(this.props.data);
+        this.props.handleSubmit(newCompany);
 
         console.log(this.props.data);
         this.clearForm();
@@ -71,7 +71,7 @@ class AddCompany extends React.Component {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <a className="waves-effect waves-green btn-flat close-modal" onClick={this.addCompany}>Add</a>
+                    <Link to="/companies" className="waves-effect waves-green btn-flat close-modal" onClick={this.addCompany}>Add</Link>
                 </div>
             </div>
         )

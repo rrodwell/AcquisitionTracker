@@ -1,5 +1,7 @@
 // React Dependencies
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import axios from "axios";
 
 import AddCompany from "../modals/AddCompany";
@@ -46,24 +48,24 @@ class Companies extends React.Component {
     }
 
     handleSubmit(companyArr) {
-        // console.log(JSON.stringify(companyArr));
-        // if(companyArr.id > this.state.companies.length){
-        //     this.setState({companies: this.state.companies.concat([companyArr])});
-        //
-        // } else {
-        //     for(var i = 0; i < this.state.companies.length; i++){
-        //         if(this.state.companies[i].id == this.state.companyOBJ.id){
-        //
-        //             companyArr.id = this.state.companyOBJ.id
-        //             this.state.companies[i] = companyArr;
-        //             this.setState({companies: this.state.companies});
-        //         }
-        //     }
-        // }
-        this.setState(companyArr);
+        fetch('/companydata',{
+            method: "POST",
+            body: JSON.stringify(companyArr),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+            })
+            .catch((error) => {
+                console.error(JSON.stringify(error));
+            });
     }
 
     handleEdit(e) {
+        e.preventDefault();
         var dataKey = e.target.id;
         console.log("this ran: "+ dataKey);
         var companiesData = this.state.companies;
@@ -96,7 +98,7 @@ class Companies extends React.Component {
                     <td>{companies.status}</td>
                     <td>{companies.contact}</td>
                     <td>{companies.performance}</td>
-                    <td><a className="updateCompany" data-target="updateCompanyModal" onClick={this.handleEdit}><i className="material-icons" id={companies._id}>edit</i></a></td>
+                    <td><Link to="/companies" className="updateCompany" data-target="updateCompanyModal" onClick={this.handleEdit}><i className="material-icons" id={companies._id}>edit</i></Link></td>
                 </tr>
             )
         });

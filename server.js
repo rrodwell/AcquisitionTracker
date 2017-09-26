@@ -51,11 +51,14 @@ app.get("/companydata", function(req,res){
 });
 
 app.post("/companydata", function(req,res){
-    Company.create(req.body.company, function (err) {
-        if (err) return handleError(err);
-        // saved!
-        res.send("Company added!");
-    })
+    var company = new Company(req.body);
+    company.save(function (err) {
+        if (err) throw (err);
+        console.log("hi")
+    });
+    console.log(req.body);
+    res.redirect("/#/companies");
+
 });
 
 app.put("/companydata/:id", function(req,res){

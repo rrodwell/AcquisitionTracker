@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     $('.modal').modal();
 
-    $('.addCompany').on("click",function(){
+    $(document).on("click",".addCompany",function(){
         $('#addCompanyModal').modal('open');
     });
 
@@ -11,8 +11,8 @@ $(document).ready(function(){
         $('.modal').modal('close');
     });
 
-    $('.updateCompany').on("click",function(){
-        $('#updateCompanyModal').modal('open');
+    $(document).on("click",".updateCompany",function(){
+         $('#updateCompanyModal').modal('open');
     });
 
 });

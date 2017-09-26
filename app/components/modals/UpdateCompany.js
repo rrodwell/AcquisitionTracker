@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 // import css from "../../public/css/footer.css";
 
 class UpdateCompany extends React.Component {
@@ -12,11 +14,34 @@ class UpdateCompany extends React.Component {
         this.changeContact = this.changeContact.bind(this);
         this.changePerformance = this.changePerformance.bind(this);
 
+        this.state = {
+            companyOBJ: props.companyOBJ
+        }
+
     }
 
-    componentDidMount(){
-
+    componentDidUpdate(){
+        console.log("companyOBJprops: " +JSON.stringify(this.props.companyOBJ));
+        console.log('state: '+ JSON.stringify(this.state));
     }
+
+    componentWillUpdate () {
+        console.log("companyOBJwillup: " +JSON.stringify(this.props.companyOBJ));
+    }
+
+    componentWillReceiveProps() {
+        console.log("companyOBJwillrec: " +JSON.stringify(this.props.companyOBJ));
+    }
+
+    componentDidMount() {
+        console.log("companyOBJdidmount: " +JSON.stringify(this.props.companyOBJ));
+    }
+
+    componentWillMount() {
+        console.log("companyOBJwillmount: " +JSON.stringify(this.props.companyOBJ));
+    }
+
+
     changeName(e) {
         this.props.companyOBJ.name = e.target.value;
     }
@@ -76,12 +101,12 @@ class UpdateCompany extends React.Component {
                         <form className="col s12" id="company-form">
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="company-name" type="text" className="validate" value={this.props.companyOBJ.name} onChange={this.changeName}/>
+                                    <input id="company-name" type="text" className="validate" placeholder={this.props.companyOBJ.name} onChange={this.changeName}/>
                                     <label htmlFor="company-name">Company Name</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <select id="company-status" value={this.props.companyOBJ.status} onChange={this.changeStatus}>
-                                        <option value="" disabled>Choose the status</option>
+                                    <select id="company-status" placeholder={this.props.companyOBJ.status} onChange={this.changeStatus}>
+                                        <option disabled>Choose the status</option>
                                         <option value="Approved">Approved</option>
                                         <option value="Pending Approved">Pending Approved</option>
                                         <option value="Researching">Researching</option>
@@ -90,11 +115,11 @@ class UpdateCompany extends React.Component {
                                     <label htmlFor="company-status">Company Status</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <input id="company-contacts" type="text" className="validate" value={this.props.companyOBJ.contact}  onChange={this.changeContact}/>
+                                    <input id="company-contacts" type="text" className="validate" placeholder={this.props.companyOBJ.contact}  onChange={this.changeContact}/>
                                     <label htmlFor="company-contacts">Company Contacts</label>
                                 </div>
                                 <div className="input-field col s12">
-                                    <input id="company-performance" type="text" className="validate" value={this.props.companyOBJ.performance} onChange={this.changePerformance}/>
+                                    <input id="company-performance" type="text" className="validate" placeholder={this.props.companyOBJ.performance} onChange={this.changePerformance}/>
                                     <label htmlFor="company-performance">Company Performance</label>
                                 </div>
                             </div>
@@ -102,8 +127,8 @@ class UpdateCompany extends React.Component {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <a className="waves-effect waves-red btn-flat close-modal delete" onClick={this.addCompany}>Delete</a>
-                    <a className="waves-effect waves-green btn-flat close-modal" onClick={this.updateCompany}>Update</a>
+                    <Link to="/companies" className="waves-effect waves-red btn-flat close-modal delete" onClick={this.addCompany}>Delete</Link>
+                    <Link to="/companies" className="waves-effect waves-green btn-flat close-modal" onClick={this.updateCompany}>Update</Link>
                 </div>
             </div>
         )
