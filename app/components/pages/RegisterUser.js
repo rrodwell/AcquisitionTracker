@@ -2,6 +2,10 @@ import React from "react";
 
 class RegisterUser extends React.Component {
 
+    createAccount() {
+        window.location.assign("#/companies");
+    }
+
     render() {
         return (
             <div className="registerForm center-align">
@@ -32,12 +36,12 @@ class RegisterUser extends React.Component {
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                             </div>
                         </div>
-                        <button className="btn waves-effect waves-light submitBtn" type="submit" name="action">Create Account
+                        <button className="btn waves-effect waves-light submitBtn" type="submit" onClick={this.createAccount}>Create Account
                         </button>
                     </form>
                 </div>
                 <div>
-                    <p>Already have an account?  <a href="/login">Log In</a></p>
+                    <p>Already have an account?  <a href="#/">Log In</a></p>
                 </div>
             </div>
         )

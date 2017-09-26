@@ -16,12 +16,17 @@ nav {
 /*Login*/
 .loginForm {
     margin: -250px 0 0 -250px;
+    background-color: rgba(29, 29, 29, 0.99);
+}
+
+.loginForm h4{
+    font-weight: 500;
 }
 
 .loginForm span i, .registerForm span i{
     margin-top: 20px;
     font-size: 7rem;
-    color: #4b4b4b;
+    color: #f5f5f5;
 }
 
 .submitBtn {
@@ -46,8 +51,8 @@ nav {
     top: 50%;
     left: 50%;
     margin: -300px 0 0 -250px;
-    background-color: rgba(255, 255, 255, 0.75);
-    color: black;
+    background-color: rgba(29, 29, 29, 0.99);
+    color: #f5f5f5;
 }
 
 /*Form titles*/
@@ -122,7 +127,7 @@ a {
     max-height: 100% !important;
     width: 50% !important;
     background-color: rgba(29, 29, 29, 0.99);
-    color: white;
+    color: #f5f5f5;
 }
 
 .modal-footer {
@@ -130,7 +135,7 @@ a {
 }
 
 .modal-footer a {
-    color: white;
+    color: #f5f5f5;
 }
 
 .modal-content {
@@ -157,7 +162,7 @@ form input {
 }
 
 .select-wrapper span.caret{
-    color: white !important;
+    color: #f5f5f5 !important;
 }
 .close {
     position: absolute;
