@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("./public"));
 
-app.get('*', function (request, response){
+app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 });
 

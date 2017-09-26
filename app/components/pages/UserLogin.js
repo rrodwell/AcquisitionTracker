@@ -13,7 +13,7 @@ class UserLogin extends React.Component {
         return (
             <div className="loginForm registerForm center-align">
                 <span><i className="large material-icons">account_circle</i></span>
-                <h4>AQUISITION TRACKER</h4>
+                <h4>ACQUISITION TRACKER</h4>
                     <div className="row">
                         <form className="col s12">
                             <div className="row">
