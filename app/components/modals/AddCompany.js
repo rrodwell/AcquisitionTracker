@@ -25,7 +25,7 @@ class AddCompany extends React.Component {
             performance:companyPerformance
         };
 
-        this.props.data.push(newCompany);
+        // this.props.data.push(newCompany);
         this.props.handleSubmit(newCompany);
 
         console.log(this.props.data);

@@ -53,10 +53,9 @@ app.post("/companydata", function(req,res){
     let company = new Company(req.body);
     company.save(function (err) {
         if (err) throw (err);
-        console.log("hi")
     });
     console.log(req.body);
-    res.redirect("/companies");
+    res.send(company);
 
 });
 

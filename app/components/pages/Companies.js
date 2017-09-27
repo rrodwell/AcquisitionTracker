@@ -46,6 +46,7 @@ class Companies extends React.Component {
     }
 
     handleSubmit(companyArr) {
+
         fetch('/companydata',{
             method: "POST",
             body: JSON.stringify(companyArr),
@@ -55,19 +56,25 @@ class Companies extends React.Component {
         })
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson);
+
+                console.log("success",responseJson);
+                this.getCompanies();
             })
             .catch((error) => {
                 console.error(JSON.stringify(error));
             });
+
     }
 
-    handleEdit(e) {
-        let dataKey = e.target.id;
+    handleEdit(num) {
+        // console.log(num);
+        // let dataKey = e.target.id;
+        // console.log("e: ", e.target.id);
+        // console.log(this.state);
         let companiesData = this.state.companies;
-        console.log(dataKey);
+        // console.log(dataKey);
         for(let i = 0; i < companiesData.length; i++){
-            if(companiesData[i]._id == dataKey) {
+            if(companiesData[i]._id == num) {
                 let obj = companiesData[i];
                 this.setState({companyOBJ:obj});
             }
@@ -96,7 +103,7 @@ class Companies extends React.Component {
                     <td>{companies.status}</td>
                     <td>{companies.contact}</td>
                     <td>{companies.performance}</td>
-                    <td><Link to="/companies" className="updateCompany" data-target="updateCompanyModal" onClick={this.handleEdit}><i className="material-icons" id={companies._id}>edit</i></Link></td>
+                    <td><Link to="/companies" className="updateCompany" data-target="updateCompanyModal" onClick={()=>this.handleEdit(companies._id)}><i className="material-icons" id={companies._id}>edit</i></Link></td>
                 </tr>
             )
         });
